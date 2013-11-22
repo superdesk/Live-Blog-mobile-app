@@ -54,7 +54,6 @@ $(function() {
 
 		renderMenu: function () {
 			console.log("menublogsListView render");
-			navigator.splashscreen.hide();
 			var that = this;
 			this.$el.empty();
 			_.each(this.collection.models, function (item) {
