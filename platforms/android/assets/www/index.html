@@ -1,0 +1,286 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mobile Live Blog</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link href="assets/css/ratchet.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/snap.css" rel="stylesheet" type="text/css">
+
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+  </head>
+  <body>
+
+
+
+
+
+    <div class="snap-drawers">
+      <div class="snap-drawer snap-drawer-left" id="left-drawer">
+        <ul class="list menu">
+
+
+
+          <li class="menu_top_container"><span id="logout_button">Logout</span></li>
+
+          <li>
+            <strong>Current Blogs</strong>
+            <ul id="menuBlogsListView">
+            </ul>
+          </li>
+
+
+
+
+        </ul>
+      </div>
+
+    </div>
+
+    <div id="content" class="snap-content">
+      <div id="overlay"></div>
+      <div id="errorAlert">
+        <h2></h2>
+        <p></p>
+      </div>
+      <div id="successAlert">
+        <h2>Success</h2>
+        <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. </p>
+      </div>
+
+
+
+
+
+      <div id="loginView" class="page"  data-snap-ignore="true" >
+       <div class="content content-padded">
+        <form id="loginForm">
+
+          <h1>Live Blog</h1>
+          <h3>Please login to continue</h3>
+          <div class="input-group">
+            <div class="input-row">
+
+              <input type="text" name="host" placeholder="liveblog.example.org" autocapitalize="off">
+            </div>
+            <div class="input-row">
+
+              <input name="login" type="text" placeholder="Username" autocapitalize="off">
+            </div>
+            <div class="input-row">
+
+              <input name="pass" type="password" placeholder="Password" >
+            </div>
+
+          </div>
+          <button type="submit" class="button-block width100">Login</button>
+        </form>
+
+        <img src="assets/images/superdesk_logo.jpg" class="superdesk_logo" />
+      </div>
+    </div> <!-- /loginView-->
+
+
+
+    <div id="blogsListView" class="page">
+      <header class="bar-title">
+        <button class="button toggle-left">
+          <img src="assets/images/button_menu.png" alt="open menu"  class="b_image" />
+        </button>
+        <h1 class="title">Live Blogs</h1>
+
+      </header>
+      <div class="content">
+        <ul class="list">
+        </ul>
+      </div>
+
+    </div> <!-- /blogsListView-->
+
+
+
+
+
+    <div id="entriesListView" class="page">
+      <header class="bar-title">
+        <button class="button toggle-left">
+          <img src="assets/images/button_menu.png" alt="open menu"  class="b_image" />
+        </button>
+        <h1 class="title"></h1>
+        <a href="#newPost" class="button">
+          <img src="assets/images/button_plus.png" alt="new post" class="b_image" />
+        </a>
+      </header>
+      <div id="loadNewPosts">
+        <span class="postsnumber"></span>
+        <h2 class="title">new posts</h2>
+        <span class="chevronup"></span>
+      </div>
+
+
+      <div class="content" id="entriesListContent">
+
+        <div id="appendLoadingIndicator">
+          <div class="loaderCenter">
+            <div  class="loaderElement"></div>
+          </div>
+        </div>
+      </div>
+      <!-- new post -->
+      <div id="newPost" class="modal" data-snap-ignore="true">
+        <header class="bar-title">
+          <h1 class="title">New Post</h1>
+          <a class="button" href="#newPost">
+            <img src="assets/images/button_close.png" alt="close"  class="b_image" />
+          </a>
+        </header>
+
+        <div class="content content-padded">
+
+         <form id="newPostForm">
+
+          <select name="type" id="postTypeSelect">
+            <option value="normal" selected="selected">normal</option>
+            <option value="image">image</option>
+            <option value="link">link</option>
+            <option value="quote">quote</option>
+            <option value="wrapup">wrapup</option>
+
+          </select>
+
+          <textarea rows="5" id="postMessage"></textarea>
+
+          <a id="takeAShot" class="add_photo">
+            <img src="assets/images/camera.png" alt="Take a Shot"  />
+            <span>Take a Shot</span>
+          </a>
+          <a id="addFromLibrary" class="add_photo">
+            <img src="assets/images/browse.png" alt="add Photo"   />
+            <span>Browse Gallery</span>
+          </a>
+
+
+          <div id="photoPreview" >
+            <img  src="" />
+            <span class="close"></span>
+          </div>
+          <span class="clear"></span>
+          <button type="submit" class="button-block width100">Submit Post</button>
+        </form>
+
+      </div>
+    </div>
+  </div> <!-- /entriesListView-->
+
+  <div id="loading" class="page content" data-snap-ignore="true" >
+    <ul class="spinner">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+  </div> <!-- /loading -->
+
+</div> <!-- /content container -->
+
+
+
+<script type="text/template" id="blogItem_template">
+
+<a id="blog_<%= Id %>" data-target="<%= Id %>">
+<h3><%= Title %></h3>
+<p><%= Description %></p>
+<span class="chevron"></span>
+</a>
+
+</script>
+
+<script type="text/template" id="menuBlogItem_template">
+
+<a id="blog_<%= Id %>" data-target="<%= Id %>">
+<%= Title %>
+</a>
+
+</script>
+
+
+
+<script type="text/template" id="item-quotation-template">
+<% if (item.has('AuthorImage') && !item.isService()) { %><figure class="authorImage"><img src="<%= item.get('AuthorImage').href %>" alt="Gravatar" /></figure>
+<% } %>
+<p class="attributes profile"><%= item.get('AuthorName') %>        <time><%= item.getPublished() %></time>
+</p>
+<div class="result-content">
+<div class="result-text"><%= item.get('Content')  %></div>
+</script>
+
+<script type="text/template" id="item-service-template">
+<div class="result-content">
+<div class="result-text"><%= item.get('Content')  %></div>
+<p class="attributes">
+<% if (!item.has('noSource') ) { %>
+<i class="source-icon"></i><%= item.get('AuthorName') %> - <% } %><time><%= item.getPublished() %></time>
+</p>
+</div>
+</script>
+
+<script type="text/template" id="item-wrapup-template">
+
+<h3><%= item.get('Content')  %></h3>
+</script>
+
+<script type="text/template" id="item-advertisement-template">
+<%= item.get('Content')  %></script>
+
+<script type="text/template" id="item-normal-template">
+<% if (item.has('AuthorImage') && !item.isService()) { %><figure class="authorImage"><img src="<%= item.get('AuthorImage').href %>" alt="Gravatar" /></figure>
+<% } %>
+<p class="attributes profile"><%= item.get('AuthorName') %>        <time><%= item.getPublished() %></time>
+</p>
+<div class="result-content">
+<div class="result-text"><%= item.get('Content')  %></div>
+
+</div>
+</script>
+
+
+
+</body>
+</html>
+
+<!-- ========= -->
+<!-- Libraries -->
+<!-- ========= -->
+<script src="phonegap.js"></script>
+
+<script src="assets/js/jquery1.9.1.js" ></script>
+<script src="assets/js/underscore.js"></script>
+<script src="assets/js/backbone.js" ></script>
+<script src="assets/js/sha.js" ></script>
+<script src="assets/js/snap.min.js" ></script>
+<script src="assets/js/fastclick.js"></script>
+<script src="assets/js/ratchet.js" ></script>
+<script src="assets/js/helpers.js" ></script>
+<script src="assets/js/jquery.pulltorefresh.js" ></script>
+
+
+
+<!-- Application: -->
+<script src="src/models.js"></script>
+<script src="src/collections.js"></script>
+<script src="src/views.js"></script>
+<script src="src/router.js"></script>
+
+
+<script src="src/app.js" ></script>
+
+</body>
+</html>
+
