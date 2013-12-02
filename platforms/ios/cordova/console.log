@@ -1,0 +1,59 @@
+2013-12-02 12:39:39.620 Live Blog[16546:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-02 12:39:39.666 Live Blog[16546:80b] Unlimited access to network resources
+2013-12-02 12:39:40.171 Live Blog[16546:80b] Resetting plugins due to page load.
+2013-12-02 12:39:40.829 Live Blog[16546:80b] Finished load of: file:///Users/tomaszrondio/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/D085212C-92BA-4478-8594-A193D9C7C94D/Live%20Blog.app/www/index.html
+2013-12-02 12:39:41.046 Live Blog[16546:80b] app init
+2013-12-02 12:39:41.047 Live Blog[16546:80b] gap initialize inside
+2013-12-02 12:39:41.330 Live Blog[16546:80b] {"Token":"3134e721310106eb0d65c6df78cadeebfdf5cc05042389dee41d9ba6c9a58e3f681e07551d3c82f41f2627b0652e95e98792619a295c745af02f740064dd532f"}
+2013-12-02 12:39:41.488 Live Blog[16546:80b] auth success
+2013-12-02 12:39:41.488 Live Blog[16546:80b] auth.route: blogsList
+2013-12-02 12:39:41.489 Live Blog[16546:80b] login router
+2013-12-02 12:39:41.489 Live Blog[16546:80b] loginView render
+2013-12-02 12:39:41.497 Live Blog[16546:80b] blogsList router
+2013-12-02 12:39:41.497 Live Blog[16546:80b] menublogListView init
+2013-12-02 12:39:41.497 Live Blog[16546:80b] blogListView init
+2013-12-02 12:39:41.498 Live Blog[16546:80b] http://mobile.sd-demo.sourcefabric.org/resources/HR/User/1/Blog?isOpen=true&X-Filter=Id,Title, Description
+2013-12-02 12:39:41.502 Live Blog[16546:80b] blogsListView render
+2013-12-02 12:39:41.599 Live Blog[16546:80b] blogsListView render
+2013-12-02 12:39:41.600 Live Blog[16546:80b] blogItem render
+2013-12-02 12:39:41.600 Live Blog[16546:80b] blogItem render
+2013-12-02 12:39:41.600 Live Blog[16546:80b] blogItem render
+2013-12-02 12:39:41.601 Live Blog[16546:80b] menublogsListView render
+2013-12-02 12:39:49.776 Live Blog[16546:80b] login router
+2013-12-02 12:39:49.777 Live Blog[16546:80b] loginView render
+2013-12-02 12:39:59.452 Live Blog[16546:80b] loginView loginHandler
+2013-12-02 12:40:10.847 Live Blog[16546:80b] loginView loginHandler
+2013-12-02 12:40:34.051 Live Blog[16546:80b] loginView loginHandler
+2013-12-02 12:40:34.197 Live Blog[16546:80b] {"Token":"ec13c5b9a1831e897ca0622e9bcc83f0bde14a83f878b49a0107fdd7bb204aadf1af9fa2ffc7351dd467eae79e278451526a1d259d8b5ac42fd83813e1e62472"}
+2013-12-02 12:40:34.278 Live Blog[16546:80b] auth success
+2013-12-02 12:40:34.279 Live Blog[16546:80b] auth callback fired
+2013-12-02 12:40:34.284 Live Blog[16546:80b] blogsList router
+2013-12-02 12:40:34.285 Live Blog[16546:80b] blogListView init
+2013-12-02 12:40:34.285 Live Blog[16546:80b] http://mobile.sd-demo.sourcefabric.org/resources/HR/User/1/Blog?isOpen=true&X-Filter=Id,Title, Description
+2013-12-02 12:40:34.290 Live Blog[16546:80b] blogsListView render
+2013-12-02 12:40:34.338 Live Blog[16546:80b] blogsListView render
+2013-12-02 12:40:34.338 Live Blog[16546:80b] blogItem render
+2013-12-02 12:40:34.339 Live Blog[16546:80b] blogItem render
+2013-12-02 12:40:34.339 Live Blog[16546:80b] blogItem render
+2013-12-02 12:40:34.339 Live Blog[16546:80b] menublogsListView render
+2013-12-02 12:50:24.746 Live Blog[17734:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-02 12:50:24.758 Live Blog[17734:80b] Unlimited access to network resources
+2013-12-02 12:50:24.961 Live Blog[17734:80b] Resetting plugins due to page load.
+2013-12-02 12:50:25.157 Live Blog[17734:80b] Finished load of: file:///Users/tomaszrondio/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/D085212C-92BA-4478-8594-A193D9C7C94D/Live%20Blog.app/www/index.html
+2013-12-02 12:50:25.314 Live Blog[17734:80b] app init
+2013-12-02 12:50:25.314 Live Blog[17734:80b] gap initialize inside
+2013-12-02 12:50:25.589 Live Blog[17734:80b] {"Token":"4169eca0624769ae12af38a80db77abe588f0ae9931bb6be0f6e5497b4c1163b1e9cc152e3c14a59b17a269b6cdd619de38633351bc664a4e7f0916a8748e397"}
+2013-12-02 12:50:25.682 Live Blog[17734:80b] auth success
+2013-12-02 12:50:25.682 Live Blog[17734:80b] auth.route: blogsList
+2013-12-02 12:50:25.683 Live Blog[17734:80b] login router
+2013-12-02 12:50:25.683 Live Blog[17734:80b] loginView render
+2013-12-02 12:50:25.690 Live Blog[17734:80b] blogsList router
+2013-12-02 12:50:25.691 Live Blog[17734:80b] menublogListView init
+2013-12-02 12:50:25.691 Live Blog[17734:80b] blogListView init
+2013-12-02 12:50:25.692 Live Blog[17734:80b] http://mobile.sd-demo.sourcefabric.org/resources/HR/User/1/Blog?isOpen=true&X-Filter=Id,Title, Description
+2013-12-02 12:50:25.698 Live Blog[17734:80b] blogsListView render
+2013-12-02 12:50:25.754 Live Blog[17734:80b] blogsListView render
+2013-12-02 12:50:25.755 Live Blog[17734:80b] blogItem render
+2013-12-02 12:50:25.755 Live Blog[17734:80b] blogItem render
+2013-12-02 12:50:25.755 Live Blog[17734:80b] blogItem render
+2013-12-02 12:50:25.756 Live Blog[17734:80b] menublogsListView render

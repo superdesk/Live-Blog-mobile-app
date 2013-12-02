@@ -394,9 +394,9 @@ window.app = {
 
 
 
-    // if (parseFloat(window.device.version) >= 7.0) {
-    //   document.body.style.marginTop = "20px";
-    // }
+     if (parseFloat(window.device.version) >= 7.0) {
+       document.body.style.marginTop = "20px";
+     }
 
     document.addEventListener("online", app.onlineEventHandler, false);
 
@@ -444,7 +444,7 @@ window.app = {
 
 
 
-app.init();
+//app.init();
 document.addEventListener("deviceready", app.init, false);
 
 
