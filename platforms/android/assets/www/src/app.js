@@ -231,10 +231,10 @@ authorize: function(user, callback){
         app.session.set("userId", data.User.Id);
         app.session.set("session", data.Session);
        // auth.checkRole();
-        auth.authorizeCallback();
+       auth.authorizeCallback();
 
-      },
-      error: function(jqXHR, textStatus, errorThrown, callback) {
+     },
+     error: function(jqXHR, textStatus, errorThrown, callback) {
 
 
 
@@ -266,7 +266,7 @@ checkRole : function(){
 
 
         $.each(data.RoleList, function() {
-            console.log("id: "+this.Id);
+          console.log("id: "+this.Id);
         });
 
         // console.log("user is an admin");
@@ -393,51 +393,54 @@ window.app = {
     console.log("app init");
 
 
-
-    // if (parseFloat(window.device.version) >= 7.0) {
-    //   document.body.style.marginTop = "20px";
-    // }
-
-    document.addEventListener("online", app.onlineEventHandler, false);
-
-    document.addEventListener("offline", app.offlineEventHandler, false);
-
-    document.addEventListener("resume", app.onlineEventHandler, false);
-
-
-    new FastClick(document.body);
-
-
-
-
-    app.snapper = new Snap({
-      element: document.getElementById('content'),
-      disable: 'right'
-    });
-
-
-    $(".toggle-left").bind('click', function(){
-
-      app.snapper.state().state=="left" ? app.snapper.close() : app.snapper.open('left');
-    });
-
-    $("#logout_button").bind("click", auth.logout);
-
-    gap.initialize(function() {
-
-      auth.login(function(){
-
-        console.log("auth.route: "+auth.route);
-        Backbone.history.start();
-        app.router.navigate("someDeadRoute");
-
-        app.router.navigate(auth.route, {trigger: true});
-
-
-      });
-    });
-
+    try{
+     if (parseFloat(window.device.version) >= 7.0) {
+       document.body.style.marginTop = "20px";
+     }
+   }
+   catch(err){
+    console.log("no window.device");
   }
+  document.addEventListener("online", app.onlineEventHandler, false);
+
+  document.addEventListener("offline", app.offlineEventHandler, false);
+
+  document.addEventListener("resume", app.onlineEventHandler, false);
+
+
+  new FastClick(document.body);
+
+
+
+
+  app.snapper = new Snap({
+    element: document.getElementById('content'),
+    disable: 'right'
+  });
+
+
+  $(".toggle-left").bind('click', function(){
+
+    app.snapper.state().state=="left" ? app.snapper.close() : app.snapper.open('left');
+  });
+
+  $("#logout_button").bind("click", auth.logout);
+
+  gap.initialize(function() {
+
+    auth.login(function(){
+
+      console.log("auth.route: "+auth.route);
+      Backbone.history.start();
+      app.router.navigate("someDeadRoute");
+
+      app.router.navigate(auth.route, {trigger: true});
+
+
+    });
+  });
+
+}
 
 };
 
@@ -451,5 +454,3 @@ document.addEventListener("deviceready", app.init, false);
 
 
 });
-
-

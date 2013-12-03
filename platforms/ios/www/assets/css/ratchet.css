@@ -123,7 +123,7 @@ a {
    Note: This is a bug for "-webkit-overflow-scrolling: touch" */
 /* Utility wrapper to pad in components like forms, block buttons and segmented-controllers so they're not full-bleed */
 .content {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -168,7 +168,7 @@ a {
 -------------------------------------------------- */
 
 [class*="bar-"] {
-  position: fixed;
+  position: absolute;
   right: 0;
   left: 0;
   z-index: 10;

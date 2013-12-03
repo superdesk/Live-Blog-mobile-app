@@ -57,3 +57,144 @@
 2013-12-02 12:50:25.755 Live Blog[17734:80b] blogItem render
 2013-12-02 12:50:25.755 Live Blog[17734:80b] blogItem render
 2013-12-02 12:50:25.756 Live Blog[17734:80b] menublogsListView render
+2013-12-02 13:40:31.339 Live Blog[17734:80b] {"Token":"87633a2fbcafc0e5218cdcf849629830ef45c22d0a42a41c3623cac729418e97856e0615d1ba42d9d0dc3c874b5a27c6bd5423d36595bc62318129e552a3e575"}
+2013-12-02 13:40:31.370 Live Blog[17734:80b] THREAD WARNING: ['Console'] took '31.166992' ms. Plugin should use a background thread.
+2013-12-02 13:40:31.464 Live Blog[17734:80b] auth success
+2013-12-02 13:40:31.465 Live Blog[17734:80b] auth callback fired
+2013-12-02 13:40:31.474 Live Blog[17734:80b] blogsList router
+2013-12-02 13:40:31.474 Live Blog[17734:80b] blogsListView render
+2013-12-02 13:40:31.475 Live Blog[17734:80b] blogItem render
+2013-12-02 13:40:31.475 Live Blog[17734:80b] blogItem render
+2013-12-02 13:40:31.475 Live Blog[17734:80b] blogItem render
+2013-12-02 14:01:52.798 Live Blog[17734:80b] {"Token":"6e97e7c4645cc3f821a63f544dca1479f3710b4241840310512bf1fcda0a7ff05f7169c21e278c81c23ee159bf04ce0dbb12d2858b241ad06f6ce556f563705b"}
+2013-12-02 14:01:52.932 Live Blog[17734:80b] auth success
+2013-12-02 14:01:52.932 Live Blog[17734:80b] auth callback fired
+2013-12-02 14:01:52.939 Live Blog[17734:80b] blogsList router
+2013-12-02 14:01:52.940 Live Blog[17734:80b] blogsListView render
+2013-12-02 14:01:52.940 Live Blog[17734:80b] blogItem render
+2013-12-02 14:01:52.941 Live Blog[17734:80b] blogItem render
+2013-12-02 14:01:52.941 Live Blog[17734:80b] blogItem render
+2013-12-02 14:05:59.594 Live Blog[17734:80b] {"Token":"64560df24fa5a3af48d01b3cfa1282f426c976430e2e2cc2ceaeb01f1169ab4ade83443b9237952a2111b996bc8bb07cbd50f1e554942b3e0835381127b83b6f"}
+2013-12-02 14:05:59.670 Live Blog[17734:80b] auth success
+2013-12-02 14:05:59.671 Live Blog[17734:80b] auth callback fired
+2013-12-02 14:05:59.679 Live Blog[17734:80b] blogsList router
+2013-12-02 14:05:59.680 Live Blog[17734:80b] blogsListView render
+2013-12-02 14:05:59.680 Live Blog[17734:80b] blogItem render
+2013-12-02 14:05:59.680 Live Blog[17734:80b] blogItem render
+2013-12-02 14:05:59.681 Live Blog[17734:80b] blogItem render
+2013-12-02 14:07:46.783 Live Blog[17734:80b] {"Token":"d09407edd0df871425d9a87356e961a58c8aebe4f7029d43db9a7d8732e22a0a67dc7b3a16462d59b30f60382b3803157bf0783df25581c47df2b6ec12a9b02f"}
+2013-12-02 14:07:46.864 Live Blog[17734:80b] auth success
+2013-12-02 14:07:46.865 Live Blog[17734:80b] auth callback fired
+2013-12-02 14:07:46.872 Live Blog[17734:80b] blogsList router
+2013-12-02 14:07:46.872 Live Blog[17734:80b] blogsListView render
+2013-12-02 14:07:46.873 Live Blog[17734:80b] blogItem render
+2013-12-02 14:07:46.873 Live Blog[17734:80b] blogItem render
+2013-12-02 14:07:46.873 Live Blog[17734:80b] blogItem render
+2013-12-02 14:23:18.622 Live Blog[17734:80b] {"Token":"2535fc39c85bbc8dd087e64047b1109bc717d70550b8da3e1ed29366c20ce0c1ae5bfff3404ed2b72d793b2fccfd608b40d47a8e8cf4292886f01c451e9b6ebf"}
+2013-12-02 14:23:18.723 Live Blog[17734:80b] auth success
+2013-12-02 14:23:18.723 Live Blog[17734:80b] auth callback fired
+2013-12-02 14:23:18.731 Live Blog[17734:80b] blogsList router
+2013-12-02 14:23:18.731 Live Blog[17734:80b] blogsListView render
+2013-12-02 14:23:18.731 Live Blog[17734:80b] blogItem render
+2013-12-02 14:23:18.732 Live Blog[17734:80b] blogItem render
+2013-12-02 14:23:18.732 Live Blog[17734:80b] blogItem render
+2013-12-02 14:44:40.582 Live Blog[17734:80b] {"Token":"8a79da5b84e4262a10f292847bb10905b957ad39aca164317ddfaf7267073b17b28d28efa5f0648e9a9d6d6f7469c2d354f7e702d5fa3d35062f1904abf8f5d7"}
+2013-12-02 14:44:40.685 Live Blog[17734:80b] auth success
+2013-12-02 14:44:40.686 Live Blog[17734:80b] auth callback fired
+2013-12-02 14:44:40.694 Live Blog[17734:80b] blogsList router
+2013-12-02 14:44:40.695 Live Blog[17734:80b] blogsListView render
+2013-12-02 14:44:40.695 Live Blog[17734:80b] blogItem render
+2013-12-02 14:44:40.695 Live Blog[17734:80b] blogItem render
+2013-12-02 14:44:40.695 Live Blog[17734:80b] blogItem render
+2013-12-02 14:46:30.544 Live Blog[17734:80b] {"Token":"7ed02eb3492828c4c78a0ffdb17d7b00aeb56a967eb9ed2fd4071232618306e041694d18a83ea4d151e2d2fb6e9a0c861164659da93209c87cb5d93cc22f73a9"}
+2013-12-02 14:46:31.261 Live Blog[17734:80b] auth success
+2013-12-02 14:46:31.262 Live Blog[17734:80b] auth callback fired
+2013-12-02 14:46:31.270 Live Blog[17734:80b] blogsList router
+2013-12-02 14:46:31.270 Live Blog[17734:80b] blogsListView render
+2013-12-02 14:46:31.271 Live Blog[17734:80b] blogItem render
+2013-12-02 14:46:31.271 Live Blog[17734:80b] blogItem render
+2013-12-02 14:46:31.271 Live Blog[17734:80b] blogItem render
+2013-12-02 14:50:58.330 Live Blog[17734:80b] {"Token":"71a7c67fffc6cb6b5e8d52f8322b1cb19c96d3e521731ccb6f9a55bded4b6747790ec11c7cbaed8efd70442307ea37dd1a653d53dbb123535267b53a982e6d54"}
+2013-12-02 14:50:58.430 Live Blog[17734:80b] auth success
+2013-12-02 14:50:58.431 Live Blog[17734:80b] auth callback fired
+2013-12-02 14:50:58.441 Live Blog[17734:80b] blogsList router
+2013-12-02 14:50:58.441 Live Blog[17734:80b] blogsListView render
+2013-12-02 14:50:58.442 Live Blog[17734:80b] blogItem render
+2013-12-02 14:50:58.442 Live Blog[17734:80b] blogItem render
+2013-12-02 14:50:58.442 Live Blog[17734:80b] blogItem render
+2013-12-02 15:24:37.616 Live Blog[17734:80b] entriesList router
+2013-12-02 15:24:37.617 Live Blog[17734:80b] ##### entriesListView init
+2013-12-02 15:24:37.994 Live Blog[17734:80b] parsing entriesList ...
+2013-12-02 15:24:37.994 Live Blog[17734:80b] cids updated. min:416, max:467
+2013-12-02 15:24:37.995 Live Blog[17734:80b] entriesListView render
+2013-12-02 15:24:38.075 Live Blog[17734:80b] Resetting plugins due to page load.
+2013-12-02 15:24:39.727 Live Blog[17734:80b] Finished load of: file:///Users/tomaszrondio/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/D085212C-92BA-4478-8594-A193D9C7C94D/Live%20Blog.app/www/index.html#entriesList
+2013-12-03 15:44:20.725 Live Blog[24160:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-03 15:44:20.765 Live Blog[24160:80b] Unlimited access to network resources
+2013-12-03 15:44:21.650 Live Blog[24160:80b] Resetting plugins due to page load.
+2013-12-03 15:44:21.930 Live Blog[24160:80b] Finished load of: file:///Users/tomaszrondio/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/D085212C-92BA-4478-8594-A193D9C7C94D/Live%20Blog.app/www/index.html
+2013-12-03 15:44:22.173 Live Blog[24160:80b] {"Token":"9f676af4eb8e9a1c846b5a060015a2afd78998312fc3618c22c77bee88ffdf722baa270e6b7cb8a8db2431162758c1c349dd7e422967f18c5b197887a0239e34"}
+2013-12-03 15:44:22.303 Live Blog[24160:80b] auth success
+2013-12-03 15:44:22.304 Live Blog[24160:80b] auth.route: blogsList
+2013-12-03 15:44:22.304 Live Blog[24160:80b] login router
+2013-12-03 15:44:22.304 Live Blog[24160:80b] loginView render
+2013-12-03 15:44:22.313 Live Blog[24160:80b] blogsList router
+2013-12-03 15:44:22.313 Live Blog[24160:80b] menublogListView init
+2013-12-03 15:44:22.313 Live Blog[24160:80b] blogListView init
+2013-12-03 15:44:22.314 Live Blog[24160:80b] http://mobile.sd-demo.sourcefabric.org/resources/HR/User/1/Blog?isOpen=true&X-Filter=Id,Title, Description
+2013-12-03 15:44:22.318 Live Blog[24160:80b] blogsListView render
+2013-12-03 15:44:22.394 Live Blog[24160:80b] blogsListView render
+2013-12-03 15:44:22.395 Live Blog[24160:80b] blogItem render
+2013-12-03 15:44:22.395 Live Blog[24160:80b] blogItem render
+2013-12-03 15:44:22.395 Live Blog[24160:80b] blogItem render
+2013-12-03 15:44:22.396 Live Blog[24160:80b] menublogsListView render
+2013-12-03 15:44:24.472 Live Blog[24160:80b] {"Token":"4532612f4e31d82770fb07b87b2e3ce1998fa2c72e3d88ebc2e208f9b1a4fba571273e76d22ddd1514d103174d2d65b7353b5a1b44bf75c350768a8b34bc319e"}
+2013-12-03 15:44:25.086 Live Blog[24160:80b] auth success
+2013-12-03 15:44:25.086 Live Blog[24160:80b] auth callback fired
+2013-12-03 15:44:25.094 Live Blog[24160:80b] blogsList router
+2013-12-03 15:44:25.094 Live Blog[24160:80b] blogsListView render
+2013-12-03 15:44:25.095 Live Blog[24160:80b] blogItem render
+2013-12-03 15:44:25.095 Live Blog[24160:80b] blogItem render
+2013-12-03 15:44:25.095 Live Blog[24160:80b] blogItem render
+2013-12-03 15:44:38.785 Live Blog[24160:80b] entriesList router
+2013-12-03 15:44:38.785 Live Blog[24160:80b] ##### entriesListView init
+2013-12-03 15:44:39.009 Live Blog[24160:80b] parsing entriesList ...
+2013-12-03 15:44:39.009 Live Blog[24160:80b] cids updated. min:416, max:467
+2013-12-03 15:44:39.010 Live Blog[24160:80b] entriesListView render
+2013-12-03 15:44:39.041 Live Blog[24160:80b] Resetting plugins due to page load.
+2013-12-03 15:44:40.373 Live Blog[24160:80b] Finished load of: file:///Users/tomaszrondio/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/D085212C-92BA-4478-8594-A193D9C7C94D/Live%20Blog.app/www/index.html#entriesList
+Terminating in response to SpringBoard's termination.
+2013-12-03 15:47:26.132 Live Blog[25219:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-03 15:47:26.146 Live Blog[25219:80b] Unlimited access to network resources
+2013-12-03 15:47:26.394 Live Blog[25219:80b] Resetting plugins due to page load.
+2013-12-03 15:47:26.612 Live Blog[25219:80b] Finished load of: file:///Users/tomaszrondio/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/D085212C-92BA-4478-8594-A193D9C7C94D/Live%20Blog.app/www/index.html
+2013-12-03 15:47:26.707 Live Blog[25219:80b] app init
+2013-12-03 15:47:26.708 Live Blog[25219:80b] gap initialize inside
+2013-12-03 15:47:26.922 Live Blog[25219:80b] {"Token":"956b9d77a6e6ab69e22e6960085e39acb3b6e5998dfcbe4ed256c6c0a666f065c9966e1bf462e47efa9c766a8feda7f77a32e839a91599b57dcd446be2fe79f5"}
+2013-12-03 15:47:27.041 Live Blog[25219:80b] auth success
+2013-12-03 15:47:27.042 Live Blog[25219:80b] auth.route: blogsList
+2013-12-03 15:47:27.042 Live Blog[25219:80b] login router
+2013-12-03 15:47:27.042 Live Blog[25219:80b] loginView render
+2013-12-03 15:47:27.049 Live Blog[25219:80b] blogsList router
+2013-12-03 15:47:27.050 Live Blog[25219:80b] menublogListView init
+2013-12-03 15:47:27.050 Live Blog[25219:80b] blogListView init
+2013-12-03 15:47:27.050 Live Blog[25219:80b] http://mobile.sd-demo.sourcefabric.org/resources/HR/User/1/Blog?isOpen=true&X-Filter=Id,Title, Description
+2013-12-03 15:47:27.056 Live Blog[25219:80b] blogsListView render
+2013-12-03 15:47:27.137 Live Blog[25219:80b] blogsListView render
+2013-12-03 15:47:27.137 Live Blog[25219:80b] blogItem render
+2013-12-03 15:47:27.138 Live Blog[25219:80b] blogItem render
+2013-12-03 15:47:27.138 Live Blog[25219:80b] blogItem render
+2013-12-03 15:47:27.138 Live Blog[25219:80b] menublogsListView render
+2013-12-03 15:47:34.885 Live Blog[25219:80b] entriesList router
+2013-12-03 15:47:34.885 Live Blog[25219:80b] ##### entriesListView init
+2013-12-03 15:47:35.006 Live Blog[25219:80b] parsing entriesList ...
+2013-12-03 15:47:35.006 Live Blog[25219:80b] cids updated. min:432, max:473
+2013-12-03 15:47:35.006 Live Blog[25219:80b] entriesListView render
+2013-12-03 15:47:50.041 Live Blog[25219:80b] prependResults
+2013-12-03 15:47:50.176 Live Blog[25219:80b] parsing entriesList ...
+2013-12-03 15:48:05.045 Live Blog[25219:80b] prependResults
+2013-12-03 15:48:05.052 Live Blog[25219:80b] parsing entriesList ...
+2013-12-03 15:48:20.048 Live Blog[25219:80b] prependResults
+2013-12-03 15:48:20.151 Live Blog[25219:80b] parsing entriesList ...
+2013-12-03 15:48:35.053 Live Blog[25219:80b] prependResults
+2013-12-03 15:48:35.056 Live Blog[25219:80b] parsing entriesList ...

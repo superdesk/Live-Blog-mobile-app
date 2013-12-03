@@ -868,6 +868,7 @@ button.loading {
 
 .list li > a:not([class*="button"]) > h3{
     overflow:hidden;
+    line-height:1.3em;
 }
 
 #menuBlogsListView li a{
