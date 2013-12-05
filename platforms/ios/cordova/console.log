@@ -198,3 +198,25 @@ Terminating in response to SpringBoard's termination.
 2013-12-03 15:48:20.151 Live Blog[25219:80b] parsing entriesList ...
 2013-12-03 15:48:35.053 Live Blog[25219:80b] prependResults
 2013-12-03 15:48:35.056 Live Blog[25219:80b] parsing entriesList ...
+2013-12-05 11:15:31.558 Live Blog[36715:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-05 11:15:31.607 Live Blog[36715:80b] Unlimited access to network resources
+2013-12-05 11:15:32.378 Live Blog[36715:80b] Resetting plugins due to page load.
+2013-12-05 11:15:32.665 Live Blog[36715:80b] Finished load of: file:///Users/tomaszrondio/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/D085212C-92BA-4478-8594-A193D9C7C94D/Live%20Blog.app/www/index.html
+2013-12-05 11:15:32.761 Live Blog[36715:80b] app init
+2013-12-05 11:15:32.762 Live Blog[36715:80b] gap initialize inside
+2013-12-05 11:15:33.011 Live Blog[36715:80b] {"Token":"4cbf8f28cd93d4a3deec6c95f0f6dd2a7047cb3980c2bd42d1b2e1559e31dd9a6c3918e9a1fdd00ab9f58f50aedcc525234d6403da577d55c8751e04af14da32"}
+2013-12-05 11:15:33.153 Live Blog[36715:80b] auth success
+2013-12-05 11:15:33.153 Live Blog[36715:80b] auth.route: blogsList
+2013-12-05 11:15:33.153 Live Blog[36715:80b] login router
+2013-12-05 11:15:33.154 Live Blog[36715:80b] loginView render
+2013-12-05 11:15:33.158 Live Blog[36715:80b] blogsList router
+2013-12-05 11:15:33.158 Live Blog[36715:80b] menublogListView init
+2013-12-05 11:15:33.159 Live Blog[36715:80b] blogListView init
+2013-12-05 11:15:33.159 Live Blog[36715:80b] http://mobile.sd-demo.sourcefabric.org/resources/HR/User/1/Blog?isOpen=true&X-Filter=Id,Title, Description
+2013-12-05 11:15:33.162 Live Blog[36715:80b] blogsListView render
+2013-12-05 11:15:33.243 Live Blog[36715:80b] blogsListView render
+2013-12-05 11:15:33.243 Live Blog[36715:80b] blogItem render
+2013-12-05 11:15:33.243 Live Blog[36715:80b] blogItem render
+2013-12-05 11:15:33.244 Live Blog[36715:80b] blogItem render
+2013-12-05 11:15:33.244 Live Blog[36715:80b] menublogsListView render
+Terminating in response to SpringBoard's termination.
