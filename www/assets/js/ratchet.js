@@ -28,7 +28,11 @@
 
   window.addEventListener('click', function (event) {
     var modal = getModal(event);
-    if (modal) modal.classList.toggle('active');
+      if (modal){
+        modal.classList.toggle('active');
+        /* tomek's hack */
+        document.querySelector('#entriesListContent').classList.toggle('active');
+      }
   });
 }();/* ----------------------------------
  * POPOVER v1.0.0

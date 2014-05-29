@@ -876,4 +876,29 @@ button.loading {
     max-width: 185px;
 }
 
+@media only screen and (orientation : landscape) {
+
+    #entriesListContent{
+
+        transition: right 0.5s ease-in;
+    }
+     #entriesListContent.active{
+        right:40%;
+
+        transition: right 0.3s ease-out;
+     }
+     #newPost{
+     right:0;
+     width:40%;
+
+    }
+    
+     #newPost .bar-title .title{
+         font-size:0px;
+
+    }
+    
+    .add_photo{
+    width:193px;
+}
 

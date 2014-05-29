@@ -35,7 +35,7 @@
     NSURL *url = [request URL];
     // Intercept the external http requests and forward to Safari.app
     // Otherwise forward to the PhoneGap WebView
-    if ( ([[url scheme] isEqualToString:@"http"] || [[url scheme] isEqualToString:@"https"]) && navigationType == UIWebViewNavigationTypeLinkClicked) {
+    if ( ([[url scheme] isEqualToString:@"http"] || [[url scheme] isEqualToString:@"https"] || [[url scheme] isEqualToString:@"//"] ) && navigationType == UIWebViewNavigationTypeLinkClicked) {
         [[UIApplication sharedApplication] openURL:url];
         return NO;
     }
