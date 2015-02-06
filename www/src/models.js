@@ -76,7 +76,7 @@ $(function() {
     window.SessionModel = Backbone.Model.extend({
         defaults: {
             userId: 0,
-            isAdmin: 0,
+            isAdmin: false,
             session: "",
             token: "",
             host: "",

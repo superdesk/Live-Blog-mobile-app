@@ -656,6 +656,7 @@ window.newPostView = Backbone.View.extend({
 	localImageURI : false,
 	serverImageURI : false,
 	submitDisabled : false,
+	autoPublish : false,
 
 
 	initialize : function () {
@@ -689,8 +690,8 @@ window.newPostView = Backbone.View.extend({
 		_.bindAll(this, 'uploadPhotoFail');
 		_.bindAll(this, 'uploadPhotoSuccess');
 
-
-
+		_.bindAll(this, 'autoPublishHandler');
+		this.$el.find("#autoPublishToggle").unbind("click").bind("click", this.autoPublishHandler);
 
 
 
@@ -722,6 +723,8 @@ window.newPostView = Backbone.View.extend({
 
 		});
 
+		if(app.session.get('isAdmin')) $("#autoPublish").show();
+
 		return this;
 	},
 
@@ -731,6 +734,24 @@ window.newPostView = Backbone.View.extend({
 		if( content != 'undefined'){
 			this.$el.find("#postMessage").val(content);
 		}
+
+	},
+
+	autoPublishHandler : function (e) {
+			e.preventDefault();
+
+			var toggle = $("#autoPublishToggle");
+			var handle      = toggle.find('.toggle-handle');
+			var offset      = 47;
+			var state     = !toggle.hasClass('active');
+
+
+			if (state) handle.css('webkitTransform',  'translate3d(' + offset + 'px,0,0)');
+			else handle.css('webkitTransform', 'translate3d(0,0,0)');
+
+			toggle.toggleClass('active');
+
+			this.autoPublish = state;
 
 	},
 
@@ -798,9 +819,13 @@ window.newPostView = Backbone.View.extend({
 		var req = { Meta : { }, Content: photo + message, Type: type, Creator: app.session.get("userId") };
 
 		var that = this;
+
+
+
+
 		try{
 			$.ajax({
-				url: 'http://'+app.session.get("host")+'/resources/my/LiveDesk/Blog/'+app.session.get("blog")+'/Post.json',
+				url: 'http://'+app.session.get("host")+'/resources/my/LiveDesk/Blog/'+app.session.get("blog")+'/Post',
 				type: 'POST',
 				data: req,
 				dataType: "json",
@@ -810,10 +835,56 @@ window.newPostView = Backbone.View.extend({
 				},
 
 				success: function(data) {
+
+
+
+					if(that.autoPublish){
+
+						var url = data.href+'/Publish';
+
+						try{
+							$.ajax({
+								url: url,
+								type: 'POST',
+								data: req,
+								dataType: "json",
+								beforeSend : function(xhr) {
+									// set header
+									xhr.setRequestHeader("Authorization", app.session.get("session"));
+								},
+
+								success: function(data) {
+
+									that.hideLoading();
+									that.clearForm();
+
+									app.successAlert("Your post has been published.","Post sent");
+
+								},
+								error: function(jqXHR, textStatus, errorThrown, callback) {
+									that.hideLoading();
+									app.errorAlert("Your post has been sent but not published.");
+									console.log(errorThrown+' '+textStatus);
+								}
+							});
+						}
+						catch(err){
+							console.log(err);
+							app.errorAlert("Your post has been sent but not published.");
+							that.hideLoading();
+						}
+
+
+
+
+					}else{
+
 					that.hideLoading();
 					that.clearForm();
 
 					app.successAlert("Your post has been sent and waits for approval.","Post sent");
+
+				}
 
 					console.log("submit success");
 
@@ -828,7 +899,7 @@ window.newPostView = Backbone.View.extend({
 		catch(err){
 			console.log(err);
 			app.errorAlert("Something went wrong. Try again");
-			this.hideLoading();
+			that.hideLoading();
 		}
 
 	},

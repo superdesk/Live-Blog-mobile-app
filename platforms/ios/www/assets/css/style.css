@@ -1,6 +1,7 @@
 body {
     -ms-overflow-x: hidden;
     overflow-x: hidden;
+    margin-top:20px;
 }
 
 a {
@@ -876,6 +877,24 @@ button.loading {
     max-width: 185px;
 }
 
+#autoPublish{
+    text-align: right;
+    margin:5px 0;
+    display:none;
+}
+
+#autoPublish p{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 33px;
+    margin-right: 10px;
+    font-size:1.1em;
+}
+
+#autoPublishToggle{
+    display: inline-block;
+}
+
 @media only screen and (orientation : landscape) {
 
     #entriesListContent{
@@ -892,13 +911,14 @@ button.loading {
      width:40%;
 
     }
-    
+
      #newPost .bar-title .title{
          font-size:0px;
 
     }
-    
+
     .add_photo{
     width:193px;
 }
+
 

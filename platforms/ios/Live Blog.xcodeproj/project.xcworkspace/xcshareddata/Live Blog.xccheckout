@@ -10,29 +10,29 @@
 	<string>Live Blog</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0FBD41DC-213B-4A56-B4C4-F84820CBA496</key>
+		<key>E62843EF45EA3488BF78603053E105D72510A665</key>
 		<string>https://github.com/superdesk/Live-Blog-mobile-app.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/ios/Live Blog.xcodeproj/project.xcworkspace</string>
+	<string>platforms/ios/Live Blog.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0FBD41DC-213B-4A56-B4C4-F84820CBA496</key>
+		<key>E62843EF45EA3488BF78603053E105D72510A665</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/superdesk/Live-Blog-mobile-app.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0FBD41DC-213B-4A56-B4C4-F84820CBA496</string>
+	<string>E62843EF45EA3488BF78603053E105D72510A665</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0FBD41DC-213B-4A56-B4C4-F84820CBA496</string>
+			<string>E62843EF45EA3488BF78603053E105D72510A665</string>
 			<key>IDESourceControlWCCName</key>
 			<string>LiveBlog</string>
 		</dict>

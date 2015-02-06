@@ -230,7 +230,7 @@ authorize: function(user, callback){
         console.log("auth success");
         app.session.set("userId", data.User.Id);
         app.session.set("session", data.Session);
-       // auth.checkRole();
+        auth.checkRole();
        auth.authorizeCallback();
 
      },
@@ -254,11 +254,12 @@ authorize: function(user, callback){
 },
 
 checkRole : function(){
-  console.log('http://'+app.session.get("host")+'/resources/HR/User/'+app.session.get("userId")+'/Role.json?X-filter=Id');
+
+  var adminRoleId = null;
 
   try{
     $.ajax({
-      url: 'http://'+app.session.get("host")+'/resources/HR/User/'+app.session.get("userId")+'/Role.json?X-filter=Id',
+      url: 'http://'+app.session.get("host")+'/resources/RBAC/Role.json?X-Filter=Name,Id',
       type: 'GET',
       crossDomain: true,
       dataType: 'json',
@@ -266,11 +267,46 @@ checkRole : function(){
 
 
         $.each(data.RoleList, function() {
-          console.log("id: "+this.Id);
+          //finds Id of administrator Role
+          if(this.Name=='Administrator') adminRoleId = this.Id;
+
         });
 
-        // console.log("user is an admin");
-        // app.session.set("userId", data.User.Id);
+        try{
+          $.ajax({
+            url: 'http://'+app.session.get("host")+'/resources/HR/User/'+app.session.get("userId")+'/Role.json?X-filter=Id',
+            type: 'GET',
+            crossDomain: true,
+            dataType: 'json',
+            success: function(data) {
+
+
+              $.each(data.RoleList, function() {
+                //user is an admin
+               if(this.Id==adminRoleId) app.session.set("isAdmin", true);
+
+              });
+
+
+
+
+            },
+            error: function(jqXHR, textStatus, errorThrown, callback) {
+
+
+
+             console.log("roleCheck fail: "+jqXHR.responseText);
+
+
+           }
+         });
+        }
+        catch(err){
+          console.log(err);
+
+        }
+
+
 
 
       },
@@ -393,14 +429,7 @@ window.app = {
     console.log("app init");
 
 
-    try{
-     if (parseFloat(window.device.version) >= 7.0) {
-       document.body.style.marginTop = "20px";
-     }
-   }
-   catch(err){
-    console.log("no window.device");
-  }
+
   document.addEventListener("online", app.onlineEventHandler, false);
 
   document.addEventListener("offline", app.offlineEventHandler, false);
@@ -446,10 +475,11 @@ window.app = {
 
 
 
-
-//app.init();
-document.addEventListener("deviceready", app.init, false);
-
+if (window.cordova !== undefined) {
+  app.init();
+}else{
+  document.addEventListener("deviceready", app.init, false);
+}
 
 
 
