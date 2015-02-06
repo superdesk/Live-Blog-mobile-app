@@ -256,5 +256,17 @@ module.exports = [
             "window.Entry"
         ]
     }
-]
+];
+module.exports.metadata = 
+// TOP OF METADATA
+{
+    "org.apache.cordova.device": "0.2.4",
+    "org.apache.cordova.network-information": "0.2.4",
+    "org.apache.cordova.camera": "0.2.4",
+    "org.apache.cordova.media-capture": "0.2.4",
+    "org.apache.cordova.file-transfer": "0.3.4",
+    "org.apache.cordova.console": "0.2.4",
+    "org.apache.cordova.file": "0.2.5"
+}
+// BOTTOM OF METADATA
 });

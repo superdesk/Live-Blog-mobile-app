@@ -1,6 +1,7 @@
 body {
     -ms-overflow-x: hidden;
     overflow-x: hidden;
+    margin-top:20px;
 }
 
 a {

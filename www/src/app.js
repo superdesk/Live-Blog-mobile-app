@@ -429,14 +429,7 @@ window.app = {
     console.log("app init");
 
 
-    try{
-     if (parseFloat(window.device.version) >= 7.0) {
-       document.body.style.marginTop = "20px";
-     }
-   }
-   catch(err){
-    console.log("no window.device");
-  }
+
   document.addEventListener("online", app.onlineEventHandler, false);
 
   document.addEventListener("offline", app.offlineEventHandler, false);
