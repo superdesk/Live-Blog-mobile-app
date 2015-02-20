@@ -1,6 +1,13 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
         "id": "org.apache.cordova.camera.Camera",
         "clobbers": [
@@ -26,13 +33,6 @@ module.exports = [
         "id": "org.apache.cordova.camera.CameraPopoverHandle",
         "clobbers": [
             "CameraPopoverHandle"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
-        "clobbers": [
-            "device"
         ]
     },
     {
@@ -144,6 +144,10 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.file/www/fileSystems.js",
+        "id": "org.apache.cordova.file.fileSystems"
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/requestFileSystem.js",
         "id": "org.apache.cordova.file.requestFileSystem",
         "clobbers": [
@@ -153,9 +157,29 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js",
         "id": "org.apache.cordova.file.resolveLocalFileSystemURI",
-        "clobbers": [
-            "window.resolveLocalFileSystemURI"
+        "merges": [
+            "window"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.file/www/android/FileSystem.js",
+        "id": "org.apache.cordova.file.androidFileSystem",
+        "merges": [
+            "FileSystem"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.file/www/fileSystems-roots.js",
+        "id": "org.apache.cordova.file.fileSystems-roots",
+        "runs": true
+    },
+    {
+        "file": "plugins/org.apache.cordova.file/www/fileSystemPaths.js",
+        "id": "org.apache.cordova.file.fileSystemPaths",
+        "merges": [
+            "cordova"
+        ],
+        "runs": true
     },
     {
         "file": "plugins/org.apache.cordova.file-transfer/www/FileTransferError.js",
@@ -235,5 +259,18 @@ module.exports = [
             "Connection"
         ]
     }
-]
+];
+module.exports.metadata = 
+// TOP OF METADATA
+{
+    "org.apache.cordova.console": "0.2.12",
+    "org.apache.cordova.device": "0.2.13",
+    "org.apache.cordova.camera": "0.3.6-dev",
+    "org.apache.cordova.file": "1.3.2",
+    "org.apache.cordova.file-transfer": "0.4.8",
+    "org.apache.cordova.media-capture": "0.3.5",
+    "org.apache.cordova.geolocation": "0.3.11",
+    "org.apache.cordova.network-information": "0.2.14"
+}
+// BOTTOM OF METADATA
 });

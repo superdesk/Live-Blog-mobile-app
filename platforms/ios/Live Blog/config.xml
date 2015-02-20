@@ -2,7 +2,7 @@
 <widget id="org.sourcefabric.liveblog" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="BackupWebStorage" value="local" />
     <preference name="DisallowOverscroll" value="false" />
     <preference name="EnableViewportScale" value="false" />
     <preference name="FadeSplashScreen" value="true" />
@@ -22,23 +22,31 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
-    <feature name="NetworkStatus">
-        <param name="ios-package" value="CDVConnection" />
+    <feature name="File">
+        <param name="ios-package" value="CDVFile" />
+    </feature>
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
     </feature>
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
     </feature>
+    <preference name="CameraUsesGeolocation" value="false" />
     <feature name="File">
         <param name="ios-package" value="CDVFile" />
-    </feature>
-    <feature name="Capture">
-        <param name="ios-package" value="CDVCapture" />
+        <param name="onload" value="true" />
     </feature>
     <feature name="FileTransfer">
         <param name="ios-package" value="CDVFileTransfer" />
     </feature>
-    <feature name="Console">
-        <param name="ios-package" value="CDVLogger" />
+    <feature name="Capture">
+        <param name="ios-package" value="CDVCapture" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
     </feature>
     <name>Live Blog</name>
     <description>

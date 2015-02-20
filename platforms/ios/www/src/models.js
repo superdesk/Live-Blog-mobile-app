@@ -69,6 +69,15 @@ $(function() {
             //return date.defaultView() + ', ' + date.toLocaleTimeString();
 
             return this.get('PublishedOn');
+        },
+        getContent: function(){
+            var content = this.get('Content');
+            return content.replace(/(http:\/\/|https:\/\/|\/\/)/g,'http://');
+        },
+
+        getAuthorImage: function(){
+            var href = this.get('AuthorImage').href;
+            return href.replace(/(http:\/\/|https:\/\/|\/\/)/g,'http://');
         }
   });
 

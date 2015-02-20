@@ -841,6 +841,8 @@ window.newPostView = Backbone.View.extend({
 					if(that.autoPublish){
 
 						var url = data.href+'/Publish';
+						url = url.replace(/(http:\/\/|https:\/\/|\/\/)/g,'http://');
+
 
 						try{
 							$.ajax({
@@ -872,6 +874,7 @@ window.newPostView = Backbone.View.extend({
 							console.log(err);
 							app.errorAlert("Your post has been sent but not published.");
 							that.hideLoading();
+							that.clearForm();
 						}
 
 
@@ -891,6 +894,7 @@ window.newPostView = Backbone.View.extend({
 				},
 				error: function(jqXHR, textStatus, errorThrown, callback) {
 					that.hideLoading();
+					that.clearForm();
 					app.errorAlert("Something went wrong. Try again");
 					console.log(errorThrown+' '+textStatus);
 				}
