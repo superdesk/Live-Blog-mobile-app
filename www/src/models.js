@@ -7,7 +7,7 @@ $(function() {
     window.BlogItemModel = Backbone.Model.extend({
         defaults: {
             Title: '',
-            Description: '',
+            Description: ''
 
         }
     });
