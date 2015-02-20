@@ -223,17 +223,17 @@
 
 
 <script type="text/template" id="item-quotation-template">
-<% if (item.has('AuthorImage') && !item.isService()) { %><figure class="authorImage"><img src="<%= item.get('AuthorImage').href %>" alt="Gravatar" /></figure>
+<% if (item.has('AuthorImage') && !item.isService()) { %><figure class="authorImage"><img src="<%= item.getAuthorImage() %>" alt="Gravatar" /></figure>
 <% } %>
 <p class="attributes profile"><%= item.get('AuthorName') %>        <time><%= item.getPublished() %></time>
 </p>
 <div class="result-content">
-<div class="result-text"><%= item.get('Content')  %></div>
+<div class="result-text"><%= item.getContent(); %></div>
 </script>
 
 <script type="text/template" id="item-service-template">
 <div class="result-content">
-<div class="result-text"><%= item.get('Content')  %></div>
+<div class="result-text"><%= item.getContent()  %></div>
 <p class="attributes">
 <% if (!item.has('noSource') ) { %>
 <i class="source-icon"></i><%= item.get('AuthorName') %> - <% } %><time><%= item.getPublished() %></time>
@@ -243,19 +243,19 @@
 
 <script type="text/template" id="item-wrapup-template">
 
-<h3><%= item.get('Content')  %></h3>
+<h3><%= item.getContent()  %></h3>
 </script>
 
 <script type="text/template" id="item-advertisement-template">
-<%= item.get('Content')  %></script>
+<%= item.getContent()  %></script>
 
 <script type="text/template" id="item-normal-template">
-<% if (item.has('AuthorImage') && !item.isService()) { %><figure class="authorImage"><img src="<%= item.get('AuthorImage').href %>" alt="Gravatar" /></figure>
+<% if (item.has('AuthorImage') && !item.isService()) { %><figure class="authorImage"><img src="<%= item.getAuthorImage() %>" alt="Gravatar" /></figure>
 <% } %>
 <p class="attributes profile"><%= item.get('AuthorName') %>        <time><%= item.getPublished() %></time>
 </p>
 <div class="result-content">
-<div class="result-text"><%= item.get('Content')  %></div>
+<div class="result-text"><%= item.getContent()  %></div>
 
 </div>
 </script>

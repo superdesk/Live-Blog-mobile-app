@@ -18,6 +18,7 @@
  */
 
 #import "CDVCapture.h"
+#import "CDVFile.h"
 #import <Cordova/CDVJSON.h>
 #import <Cordova/CDVAvailability.h>
 
@@ -27,6 +28,16 @@
 #define kW3CMediaFormatBitrate @"bitrate"
 #define kW3CMediaFormatDuration @"duration"
 #define kW3CMediaModeType @"type"
+
+@implementation NSBundle (PluginExtensions)
+
++ (NSBundle*) pluginBundle:(CDVPlugin*)plugin {
+    NSBundle* bundle = [NSBundle bundleWithPath: [[NSBundle mainBundle] pathForResource:NSStringFromClass([plugin class]) ofType: @"bundle"]];
+    return bundle;
+}
+@end
+
+#define PluginLocalizedString(plugin, key, comment) [[NSBundle pluginBundle:(plugin)] localizedStringForKey:(key) value:nil table:nil]
 
 @implementation CDVImagePicker
 
@@ -105,13 +116,7 @@
 
         self.inUse = YES;
 
-        SEL selector = NSSelectorFromString(@"presentViewController:animated:completion:");
-        if ([self.viewController respondsToSelector:selector]) {
-            [self.viewController presentViewController:navController animated:YES completion:nil];
-        } else {
-            // deprecated as of iOS >= 6.0
-            [self.viewController presentModalViewController:navController animated:YES];
-        }
+        [self.viewController presentViewController:navController animated:YES completion:nil];
     }
 
     if (result) {
@@ -158,13 +163,7 @@
         // CDVImagePicker specific property
         pickerController.callbackId = callbackId;
 
-        SEL selector = NSSelectorFromString(@"presentViewController:animated:completion:");
-        if ([self.viewController respondsToSelector:selector]) {
-            [self.viewController presentViewController:pickerController animated:YES completion:nil];
-        } else {
-            // deprecated as of iOS >= 6.0
-            [self.viewController presentModalViewController:pickerController animated:YES];
-        }
+        [self.viewController presentViewController:pickerController animated:YES completion:nil];
     }
 }
 
@@ -276,13 +275,7 @@
         // CDVImagePicker specific property
         pickerController.callbackId = callbackId;
 
-        SEL selector = NSSelectorFromString(@"presentViewController:animated:completion:");
-        if ([self.viewController respondsToSelector:selector]) {
-            [self.viewController presentViewController:pickerController animated:YES completion:nil];
-        } else {
-            // deprecated as of iOS >= 6.0
-            [self.viewController presentModalViewController:pickerController animated:YES];
-        }
+        [self.viewController presentViewController:pickerController animated:YES completion:nil];
     }
 }
 
@@ -440,7 +433,7 @@
         // NSLog(@"getFormatData: %@", [formatData description]);
     }
     if (bError) {
-        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageToErrorObject:errorCode];
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageToErrorObject:(int)errorCode];
     }
     if (result) {
         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
@@ -452,8 +445,20 @@
     NSFileManager* fileMgr = [[NSFileManager alloc] init];
     NSMutableDictionary* fileDict = [NSMutableDictionary dictionaryWithCapacity:5];
 
+    CDVFile *fs = [self.commandDelegate getCommandInstance:@"File"];
+
+    // Get canonical version of localPath
+    NSURL *fileURL = [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", fullPath]];
+    NSURL *resolvedFileURL = [fileURL URLByResolvingSymlinksInPath];
+    NSString *path = [resolvedFileURL path];
+
+    CDVFilesystemURL *url = [fs fileSystemURLforLocalPath:path];
+
     [fileDict setObject:[fullPath lastPathComponent] forKey:@"name"];
     [fileDict setObject:fullPath forKey:@"fullPath"];
+    if (url) {
+        [fileDict setObject:[url absoluteURL] forKey:@"localURL"];
+    }
     // determine type
     if (!type) {
         id command = [self.commandDelegate getCommandInstance:@"File"];
@@ -492,11 +497,7 @@
     CDVImagePicker* cameraPicker = (CDVImagePicker*)picker;
     NSString* callbackId = cameraPicker.callbackId;
 
-    if ([picker respondsToSelector:@selector(presentingViewController)]) {
-        [[picker presentingViewController] dismissModalViewControllerAnimated:YES];
-    } else {
-        [[picker parentViewController] dismissModalViewControllerAnimated:YES];
-    }
+    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 
     CDVPluginResult* result = nil;
 
@@ -533,11 +534,7 @@
     CDVImagePicker* cameraPicker = (CDVImagePicker*)picker;
     NSString* callbackId = cameraPicker.callbackId;
 
-    if ([picker respondsToSelector:@selector(presentingViewController)]) {
-        [[picker presentingViewController] dismissModalViewControllerAnimated:YES];
-    } else {
-        [[picker parentViewController] dismissModalViewControllerAnimated:YES];
-    }
+    [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 
     CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageToErrorObject:CAPTURE_NO_MEDIA_FILES];
     [self.commandDelegate sendPluginResult:result callbackId:callbackId];
@@ -556,6 +553,11 @@
     }
 #endif
 
+@end
+
+@interface CDVAudioRecorderViewController () {
+    UIStatusBarStyle _previousStatusBarStyle;
+}
 @end
 
 @implementation CDVAudioRecorderViewController
@@ -588,6 +590,7 @@
         self.callbackId = theCallbackId;
         self.errorCode = CAPTURE_NO_MEDIA_FILES;
         self.isTimed = self.duration != nil;
+        _previousStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
 
         return self;
     }
@@ -649,7 +652,7 @@
     [self.timerLabel setTextAlignment:UITextAlignmentCenter];
 #endif
     [self.timerLabel setText:@"0:00"];
-    [self.timerLabel setAccessibilityHint:NSLocalizedString(@"recorded time in minutes and seconds", nil)];
+    [self.timerLabel setAccessibilityHint:PluginLocalizedString(captureCommand, @"recorded time in minutes and seconds", nil)];
     self.timerLabel.accessibilityTraits |= UIAccessibilityTraitUpdatesFrequently;
     self.timerLabel.accessibilityTraits &= ~UIAccessibilityTraitStaticText;
     [tmp addSubview:self.timerLabel];
@@ -660,7 +663,7 @@
     self.stopRecordImage = [UIImage imageNamed:[self resolveImageResource:@"CDVCapture.bundle/stop_button"]];
     self.recordButton.accessibilityTraits |= [self accessibilityTraits];
     self.recordButton = [[UIButton alloc] initWithFrame:CGRectMake((viewRect.size.width - recordImage.size.width) / 2, (microphone.size.height + (grayBkg.size.height - recordImage.size.height) / 2), recordImage.size.width, recordImage.size.height)];
-    [self.recordButton setAccessibilityLabel:NSLocalizedString(@"toggle audio recording", nil)];
+    [self.recordButton setAccessibilityLabel:PluginLocalizedString(captureCommand, @"toggle audio recording", nil)];
     [self.recordButton setImage:recordImage forState:UIControlStateNormal];
     [self.recordButton addTarget:self action:@selector(processButton:) forControlEvents:UIControlEventTouchUpInside];
     [tmp addSubview:recordButton];
@@ -816,7 +819,7 @@
         BOOL isUIAccessibilityAnnouncementNotification = (&UIAccessibilityAnnouncementNotification != NULL);
         if (isUIAccessibilityAnnouncementNotification) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 500ull * NSEC_PER_MSEC), dispatch_get_main_queue(), ^{
-                    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, NSLocalizedString(@"timed recording complete", nil));
+                    UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, PluginLocalizedString(captureCommand, @"timed recording complete", nil));
                 });
         }
     } else {
@@ -828,15 +831,11 @@
 - (void)dismissAudioView:(id)sender
 {
     // called when done button pressed or when error condition to do cleanup and remove view
-    if ([self.captureCommand.viewController.modalViewController respondsToSelector:@selector(presentingViewController)]) {
-        [[self.captureCommand.viewController.modalViewController presentingViewController] dismissModalViewControllerAnimated:YES];
-    } else {
-        [[self.captureCommand.viewController.modalViewController parentViewController] dismissModalViewControllerAnimated:YES];
-    }
+    [[self.captureCommand.viewController.presentedViewController presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 
     if (!self.pluginResult) {
         // return error
-        self.pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageToErrorObject:self.errorCode];
+        self.pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageToErrorObject:(int)self.errorCode];
     }
 
     self.avRecorder = nil;
@@ -846,6 +845,10 @@
     UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
     // return result
     [self.captureCommand.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
+
+    if (IsAtLeastiOSVersion(@"7.0")) {
+        [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle];
+    }
 }
 
 - (void)updateTime
@@ -894,6 +897,20 @@
     NSLog(@"error recording audio");
     self.pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_IO_EXCEPTION messageToErrorObject:CAPTURE_INTERNAL_ERR];
     [self dismissAudioView:nil];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (IsAtLeastiOSVersion(@"7.0")) {
+        [[UIApplication sharedApplication] setStatusBarStyle:[self preferredStatusBarStyle]];
+    }
+
+    [super viewWillAppear:animated];
 }
 
 @end
