@@ -87,7 +87,6 @@ $(function() {
 			var tmpl = _.template(this.template);
 
 			console.log("blogItem render");
-                                                    console.log(this.JSONmodel);
 
 			$(this.el).html(tmpl(this.JSONmodel));
 			return this;

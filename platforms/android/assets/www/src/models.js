@@ -5,6 +5,11 @@ $(function() {
 
 
     window.BlogItemModel = Backbone.Model.extend({
+        defaults: {
+            Title: '',
+            Description: ''
+
+        }
     });
 
     window.PostTypeModel = Backbone.Model.extend({
@@ -69,6 +74,15 @@ $(function() {
             //return date.defaultView() + ', ' + date.toLocaleTimeString();
 
             return this.get('PublishedOn');
+        },
+        getContent: function(){
+            var content = this.get('Content');
+            return content.replace(/(http:\/\/|https:\/\/|\/\/)/g,'http://');
+        },
+
+        getAuthorImage: function(){
+            var href = this.get('AuthorImage').href;
+            return href.replace(/(http:\/\/|https:\/\/|\/\/)/g,'http://');
         }
   });
 
@@ -76,7 +90,7 @@ $(function() {
     window.SessionModel = Backbone.Model.extend({
         defaults: {
             userId: 0,
-            isAdmin: 0,
+            isAdmin: false,
             session: "",
             token: "",
             host: "",

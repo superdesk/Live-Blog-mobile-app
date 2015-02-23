@@ -5,6 +5,11 @@ $(function() {
 
 
     window.BlogItemModel = Backbone.Model.extend({
+        defaults: {
+            Title: '',
+            Description: ''
+
+        }
     });
 
     window.PostTypeModel = Backbone.Model.extend({

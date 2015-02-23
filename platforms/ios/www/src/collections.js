@@ -11,7 +11,7 @@ $(function() {
 
 
    parse: function(response) {
-                                                     
+
     return response.BlogList;
   }
 });
