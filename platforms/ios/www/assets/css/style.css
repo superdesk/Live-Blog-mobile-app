@@ -572,7 +572,7 @@ a .small_caption{
 #appendLoadingIndicator {
     display: none;
     position: absolute;
-    height: 40px;
+    height: 30px;
     bottom: 0;
     left: 0;
     z-index:999;
@@ -585,14 +585,14 @@ a .small_caption{
     top: 0;
     left: 0;
     background:#fff;
-    height:20px;
+    height:10px;
 
 }
 
 .loaderElement {
     background-color: #098f64;
-    width: 10px;
-    height:20px;
+    width: 0;
+    height:10px;
     position:absolute;
     top:0;
     left:0;
@@ -610,50 +610,50 @@ a .small_caption{
 
 @keyframes "leftToRight" {
  0% {
-    left:0;
+    width:1%;
 }
 100% {
-    left:100%;
+    width:100%;
 }
 
 }
 
 @-moz-keyframes leftToRight {
  0% {
-   left:0;
+   width:0;
 }
 100% {
-   left:100%;
+   width:100%;
 }
 
 }
 
 @-webkit-keyframes "leftToRight" {
  0% {
-   left:0;
+   width:0;
 }
 100% {
-   left:100%;
+   width:100%;
 }
 
 }
 
 @-ms-keyframes "leftToRight" {
  0% {
-   left:0;
+   width:0;
 }
 100% {
-   left:100%;
+   width:100%;
 }
 
 }
 
 @-o-keyframes "leftToRight" {
  0% {
-   left:0;
+   width:0;
 }
 100% {
-    left:100%;
+    width:100%;
 }
 
 }
