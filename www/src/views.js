@@ -655,6 +655,7 @@ window.newPostView = Backbone.View.extend({
 	el: "#newPost",
 	localImageURI : false,
 	serverImageURI : false,
+    meta: {},
 	submitDisabled : false,
 	autoPublish : false,
 
@@ -792,7 +793,7 @@ window.newPostView = Backbone.View.extend({
 		this.$el.find("#postMessage").val("");
 		this.localImageURI = false;
 		this.serverImageURI = false;
-
+        this.meta = {};
 
 		var imageConteiner = $("#photoPreview");
 		var image = $("#photoPreview img");
@@ -815,8 +816,9 @@ window.newPostView = Backbone.View.extend({
 		}
 		var photo ='';
 		if(this.serverImageURI) photo = '<img src="'+this.serverImageURI+'" />';
-
-		var req = { Meta : { }, Content: photo + message, Type: type, Creator: app.session.get("userId") };
+        var Meta = this.meta;
+        Meta.caption = message;
+		var req = { Meta : Meta, Content: photo + message, Type: type, Creator: app.session.get("userId") };
 
 		var that = this;
 
@@ -997,7 +999,8 @@ window.newPostView = Backbone.View.extend({
 		console.log("Code = " + r.responseCode);
 		console.log("Response = " + r.response);
 		console.log("Sent = " + r.bytesSent);
-		this.serverImageURI = JSON.parse(r.response).Content.href;
+        this.meta = JSON.parse(r.response);
+		this.serverImageURI = this.meta.Content.href;
 		this.submitForm();
 	},
 
