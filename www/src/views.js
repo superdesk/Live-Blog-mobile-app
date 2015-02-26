@@ -127,30 +127,30 @@ $(function() {
 
 
 	        //this.render();
-	    },
+	      },
 
-	    render: function () {
-	    	console.log("blogsListView render");
-	    	var that = this;
-	    	this.$el.find('ul').empty();
-	    	_.each(this.collection.models, function (item) {
-	    		that.renderBlogItem(item);
-	    	}, this);
-	    	$("#loading").css("display", "none");
-	    	$(".page").css("display", "none");
-	    	this.$el.css("display", "block");
-	    },
+	      render: function () {
+	      	console.log("blogsListView render");
+	      	var that = this;
+	      	this.$el.find('ul').empty();
+	      	_.each(this.collection.models, function (item) {
+	      		that.renderBlogItem(item);
+	      	}, this);
+	      	$("#loading").css("display", "none");
+	      	$(".page").css("display", "none");
+	      	this.$el.css("display", "block");
+	      },
 
 
 
-	    renderBlogItem: function (item) {
-	    	var blogItemView = new blogsListItemView({
-	    		model: item
-	    	});
+	      renderBlogItem: function (item) {
+	      	var blogItemView = new blogsListItemView({
+	      		model: item
+	      	});
 
-	    	this.$el.find("ul").append(blogItemView.render().el);
-	    }
-	});
+	      	this.$el.find("ul").append(blogItemView.render().el);
+	      }
+	    });
 
 
 
@@ -655,7 +655,7 @@ window.newPostView = Backbone.View.extend({
 	el: "#newPost",
 	localImageURI : false,
 	serverImageURI : false,
-    meta: {},
+	meta: {},
 	submitDisabled : false,
 	autoPublish : false,
 
@@ -739,20 +739,20 @@ window.newPostView = Backbone.View.extend({
 	},
 
 	autoPublishHandler : function (e) {
-			e.preventDefault();
+		e.preventDefault();
 
-			var toggle = $("#autoPublishToggle");
-			var handle      = toggle.find('.toggle-handle');
-			var offset      = 47;
-			var state     = !toggle.hasClass('active');
+		var toggle = $("#autoPublishToggle");
+		var handle      = toggle.find('.toggle-handle');
+		var offset      = 47;
+		var state     = !toggle.hasClass('active');
 
 
-			if (state) handle.css('webkitTransform',  'translate3d(' + offset + 'px,0,0)');
-			else handle.css('webkitTransform', 'translate3d(0,0,0)');
+		if (state) handle.css('webkitTransform',  'translate3d(' + offset + 'px,0,0)');
+		else handle.css('webkitTransform', 'translate3d(0,0,0)');
 
-			toggle.toggleClass('active');
+		toggle.toggleClass('active');
 
-			this.autoPublish = state;
+		this.autoPublish = state;
 
 	},
 
@@ -793,7 +793,7 @@ window.newPostView = Backbone.View.extend({
 		this.$el.find("#postMessage").val("");
 		this.localImageURI = false;
 		this.serverImageURI = false;
-        this.meta = {};
+		this.meta = {};
 
 		var imageConteiner = $("#photoPreview");
 		var image = $("#photoPreview img");
@@ -816,8 +816,11 @@ window.newPostView = Backbone.View.extend({
 		}
 		var photo ='';
 		if(this.serverImageURI) photo = '<img src="'+this.serverImageURI+'" />';
-        var Meta = this.meta;
-        Meta.caption = message;
+		var Meta = this.meta;
+		Meta.caption = message;
+
+		Meta = JSON.stringify(Meta);
+
 		var req = { Meta : Meta, Content: photo + message, Type: type, Creator: app.session.get("userId") };
 
 		var that = this;
@@ -884,12 +887,12 @@ window.newPostView = Backbone.View.extend({
 
 					}else{
 
-					that.hideLoading();
-					that.clearForm();
+						that.hideLoading();
+						that.clearForm();
 
-					app.successAlert("Your post has been sent and waits for approval.","Post sent");
+						app.successAlert("Your post has been sent and waits for approval.","Post sent");
 
-				}
+					}
 
 					console.log("submit success");
 
@@ -901,115 +904,115 @@ window.newPostView = Backbone.View.extend({
 					console.log(errorThrown+' '+textStatus);
 				}
 			});
-		}
-		catch(err){
-			console.log(err);
-			app.errorAlert("Something went wrong. Try again");
-			that.hideLoading();
-		}
+}
+catch(err){
+	console.log(err);
+	app.errorAlert("Something went wrong. Try again");
+	that.hideLoading();
+}
 
-	},
+},
 
-	addFromLibraryClickHandler : function () {
+addFromLibraryClickHandler : function () {
 
-		navigator.camera.getPicture(this.cameraSuccess, this.cameraFail,
-		{
-			quality: 75,
-			correctOrientation: true,
-			destinationType: Camera.DestinationType.FILE_URI,
-			saveToPhotoAlbum: false,
-			sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
-			encodingType: Camera.EncodingType.JPEG,
-			targetWidth: 600,
-			targetHeight: 600
-		}
-		);
-
-	},
-
-	cameraClickHandler: function () {
-
-		navigator.camera.getPicture(this.cameraSuccess, this.cameraFail,
-		{
-			quality: 75,
-			correctOrientation: true,
-			destinationType: Camera.DestinationType.FILE_URI,
-			saveToPhotoAlbum: true,
-			sourceType : Camera.PictureSourceType.CAMERA,
-			encodingType: Camera.EncodingType.JPEG,
-			targetWidth: 600,
-			targetHeight: 600
-		}
-		);
-
-	},
-
-	cameraSuccess : function(imageURI) {
-		var imageConteiner = $("#photoPreview");
-		var image = $("#photoPreview img");
-		image.attr("src",imageURI);
-		this.localImageURI = imageURI;
-
-		$(".add_photo").fadeOut( "fast", function() {
-			imageConteiner.fadeIn();
-		});
-
-
-
-	},
-
-	deletePhoto : function(imageURI) {
-		var imageConteiner = $("#photoPreview");
-		var image = $("#photoPreview img");
-
-		this.localImageURI = false;
-
-		imageConteiner.fadeOut( "fast", function() {
-			image.attr("src", '');
-			$(".add_photo").fadeIn();
-		});
-
-
-
-	},
-
-	cameraFail : function(message) {
-		console.log(message);
-	},
-
-
-	uploadPhoto : function () {
-		var options = new FileUploadOptions();
-		options.fileKey="file";
-		options.fileName=this.localImageURI.substr(this.localImageURI.lastIndexOf('/')+1);
-		options.mimeType="image/jpeg";
-
-		var params = {};
-
-		options.params = params;
-
-		var uploadURL = 'http://'+app.session.get("host")+'/resources/my/HR/User/'+app.session.get("userId")+'/MetaData/Upload.json?X-Filter=*&Authorization='+ app.session.get("session");
-
-		var ft = new FileTransfer();
-		var that= this;
-		ft.upload(this.localImageURI, encodeURI(uploadURL), that.uploadPhotoSuccess, that.uploadPhotoFail, options);
-	},
-
-	uploadPhotoSuccess : function (r) {
-		console.log("Code = " + r.responseCode);
-		console.log("Response = " + r.response);
-		console.log("Sent = " + r.bytesSent);
-        this.meta = JSON.parse(r.response);
-		this.serverImageURI = this.meta.Content.href;
-		this.submitForm();
-	},
-
-	uploadPhotoFail : function (error) {
-		app.errorAlert("An error has occurred. Please try again.");
-		this.hideLoading();
-		console.log("upload error source " + error.source);
-		console.log("upload error target " + error.target);
+	navigator.camera.getPicture(this.cameraSuccess, this.cameraFail,
+	{
+		quality: 75,
+		correctOrientation: true,
+		destinationType: Camera.DestinationType.FILE_URI,
+		saveToPhotoAlbum: false,
+		sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+		encodingType: Camera.EncodingType.JPEG,
+		targetWidth: 600,
+		targetHeight: 600
 	}
+	);
+
+},
+
+cameraClickHandler: function () {
+
+	navigator.camera.getPicture(this.cameraSuccess, this.cameraFail,
+	{
+		quality: 75,
+		correctOrientation: true,
+		destinationType: Camera.DestinationType.FILE_URI,
+		saveToPhotoAlbum: true,
+		sourceType : Camera.PictureSourceType.CAMERA,
+		encodingType: Camera.EncodingType.JPEG,
+		targetWidth: 600,
+		targetHeight: 600
+	}
+	);
+
+},
+
+cameraSuccess : function(imageURI) {
+	var imageConteiner = $("#photoPreview");
+	var image = $("#photoPreview img");
+	image.attr("src",imageURI);
+	this.localImageURI = imageURI;
+
+	$(".add_photo").fadeOut( "fast", function() {
+		imageConteiner.fadeIn();
+	});
+
+
+
+},
+
+deletePhoto : function(imageURI) {
+	var imageConteiner = $("#photoPreview");
+	var image = $("#photoPreview img");
+
+	this.localImageURI = false;
+
+	imageConteiner.fadeOut( "fast", function() {
+		image.attr("src", '');
+		$(".add_photo").fadeIn();
+	});
+
+
+
+},
+
+cameraFail : function(message) {
+	console.log(message);
+},
+
+
+uploadPhoto : function () {
+	var options = new FileUploadOptions();
+	options.fileKey="file";
+	options.fileName=this.localImageURI.substr(this.localImageURI.lastIndexOf('/')+1);
+	options.mimeType="image/jpeg";
+
+	var params = {};
+
+	options.params = params;
+
+	var uploadURL = 'http://'+app.session.get("host")+'/resources/my/HR/User/'+app.session.get("userId")+'/MetaData/Upload.json?X-Filter=*&Authorization='+ app.session.get("session");
+
+	var ft = new FileTransfer();
+	var that= this;
+	ft.upload(this.localImageURI, encodeURI(uploadURL), that.uploadPhotoSuccess, that.uploadPhotoFail, options);
+},
+
+uploadPhotoSuccess : function (r) {
+	console.log("Code = " + r.responseCode);
+	console.log("Response = " + r.response);
+	console.log("Sent = " + r.bytesSent);
+	this.meta = JSON.parse(r.response);
+	this.serverImageURI = this.meta.Content.href;
+	this.submitForm();
+},
+
+uploadPhotoFail : function (error) {
+	app.errorAlert("An error has occurred. Please try again.");
+	this.hideLoading();
+	console.log("upload error source " + error.source);
+	console.log("upload error target " + error.target);
+}
 
 
 
