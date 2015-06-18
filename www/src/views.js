@@ -285,7 +285,7 @@ window.entriesListItemView = Backbone.View.extend({
 			if (this.model.get('AuthorName') == 'flickr') {
 
 
-				this.model.set('Content', '<a class="service_content " href="http:'+meta.imageUrls.full+'"><img class="responsive" src="http:'+meta.imageUrls.full+'" /><p>'+this.model.get('Content')+'</p></a>');
+				this.model.set('Content', '<a class="service_content " href="http:'+meta.imageUrls.full+'" target="_system"><img class="responsive" src="http:'+meta.imageUrls.full+'" /><p>'+this.model.get('Content')+'</p></a>');
 
 			} else if (this.model.get('AuthorName') == 'twitter') {
 
@@ -468,6 +468,27 @@ window.entriesListView = Backbone.View.extend({
 	},
 
 
+	handleExternalUrls : function(){
+		// Handle click events for all external URLs
+		    if (device.platform.toUpperCase() === 'ANDROID') {
+		    		$(document).off('.externalUrls');
+		        $(document).on('click.externalUrls', 'a[href^="http"]', function (e) {
+		            var url = $(this).attr('href');
+		            navigator.app.loadUrl(url, { openExternal: true });
+		            e.preventDefault();
+		        });
+		    }
+		    else if (device.platform.toUpperCase() === 'IOS') {
+		    		$(document).off('.externalUrls');
+		        $(document).on('click.externalUrls', 'a[href^="http"]', function (e) {
+		            var url = $(this).attr('href');
+		            window.open(url, '_system');
+		            e.preventDefault();
+		        });
+		    }
+
+	},
+
 
 	renderView: function () {
 		console.log("entriesListView render");
@@ -479,7 +500,7 @@ window.entriesListView = Backbone.View.extend({
 
 
 
-		//this.updateAnchorClickEvent();
+		this.handleExternalUrls();
 		$(".page").css("display", "none");
 
 
@@ -561,8 +582,9 @@ window.entriesListView = Backbone.View.extend({
 			this.renderItem(item, 1);
 		}, this);
 
-		//this.updateAnchorClickEvent();
+		this.handleExternalUrls();
 		this.collection.updateCids();
+
 		return true;
 	},
 
@@ -584,8 +606,9 @@ window.entriesListView = Backbone.View.extend({
 						that.renderItem(item, 0);
 					}, that);
 
-					//that.updateAnchorClickEvent();
+					that.handleExternalUrls();
 					that.collection.updateCids();
+
 					that.hideLoadingIndicator();
 					that.isLoading = false;
 
@@ -669,6 +692,8 @@ window.newPostView = Backbone.View.extend({
 
 
 
+
+
 		_.bindAll(this, 'selectHandler');
 		this.$el.find("#postTypeSelect").unbind("change").bind("change", this.selectHandler);
 
@@ -694,7 +719,8 @@ window.newPostView = Backbone.View.extend({
 		_.bindAll(this, 'autoPublishHandler');
 		this.$el.find("#autoPublishToggle").unbind("click").bind("click", this.autoPublishHandler);
 
-
+		_.bindAll(this, 'setAutopublishButtonState');
+		this.setAutopublishButtonState();
 
 	},
 
@@ -726,6 +752,18 @@ window.newPostView = Backbone.View.extend({
 
 		if(app.session.get('isAdmin')) $("#autoPublish").show();
 
+		// clear autopublish button state
+		this.setAutopublishButtonState();
+
+		//image reset
+		this.localImageURI=false;
+
+		$("#photoPreview").css("display", "none");
+		//fadeOut( "fast", function() {
+			$("#photoPreview img").attr("src", '');
+			$(".add_photo").css("display", "block");
+		//});
+
 		return this;
 	},
 
@@ -753,6 +791,25 @@ window.newPostView = Backbone.View.extend({
 		toggle.toggleClass('active');
 
 		this.autoPublish = state;
+
+	},
+
+	setAutopublishButtonState: function(){
+
+		var toggle = $("#autoPublishToggle");
+		var handle      = toggle.find('.toggle-handle');
+		var offset      = 47;
+		var state     = this.autoPublish;
+
+
+		if (state){
+			handle.css('webkitTransform',  'translate3d(' + offset + 'px,0,0)');
+			toggle.addClass('active');
+		} else {
+			handle.css('webkitTransform', 'translate3d(0,0,0)');
+			toggle.removeClass('active');
+		}
+
 
 	},
 
@@ -953,9 +1010,10 @@ cameraSuccess : function(imageURI) {
 	image.attr("src",imageURI);
 	this.localImageURI = imageURI;
 
-	$(".add_photo").fadeOut( "fast", function() {
-		imageConteiner.fadeIn();
-	});
+	$(".add_photo").css("display", "none");
+	//fadeOut( "fast", function() {
+		imageConteiner.css("display", "block");
+//	});
 
 
 
@@ -967,10 +1025,11 @@ deletePhoto : function(imageURI) {
 
 	this.localImageURI = false;
 
-	imageConteiner.fadeOut( "fast", function() {
+	imageConteiner.css("display", "none");
+	//fadeOut( "fast", function() {
+		$(".add_photo").css("display", "block");
 		image.attr("src", '');
-		$(".add_photo").fadeIn();
-	});
+	//});
 
 
 
@@ -985,6 +1044,12 @@ uploadPhoto : function () {
 	var options = new FileUploadOptions();
 	options.fileKey="file";
 	options.fileName=this.localImageURI.substr(this.localImageURI.lastIndexOf('/')+1);
+
+	var filenamesplit = options.fileName.split("?");
+	if(filenamesplit[1]){
+		options.fileName = filenamesplit[0];
+	}
+
 	options.mimeType="image/jpeg";
 
 	var params = {};
