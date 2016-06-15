@@ -9,15 +9,11 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
                         {
@@ -44,15 +40,7 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 16
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
-                            "count": 1
+                            "count": 4
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
@@ -60,6 +48,14 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
                             "count": 1
                         },
                         {
@@ -72,13 +68,13 @@
         }
     },
     "installed_plugins": {
+        "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "org.sourcefabric.liveblog"
+        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "org.sourcefabric.liveblog"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "org.sourcefabric.liveblog"
-        },
-        "org.apache.cordova.camera": {
             "PACKAGE_NAME": "org.sourcefabric.liveblog"
         },
         "org.apache.cordova.file": {
@@ -87,10 +83,10 @@
         "org.apache.cordova.file-transfer": {
             "PACKAGE_NAME": "org.sourcefabric.liveblog"
         },
-        "org.apache.cordova.media-capture": {
+        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "org.sourcefabric.liveblog"
         },
-        "org.apache.cordova.geolocation": {
+        "org.apache.cordova.media-capture": {
             "PACKAGE_NAME": "org.sourcefabric.liveblog"
         },
         "org.apache.cordova.network-information": {
